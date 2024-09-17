@@ -123,6 +123,14 @@ document.querySelectorAll('.js_add_to_cart')
         })
       }
 
-      console.log(cart);
+      let cartQuantity = 0;
+
+      cart.forEach((item) => {
+        cartQuantity += item.quantity;
+      })
+
+
+      document.querySelector('.js_cart_quantity')
+        .innerHTML = cartQuantity;
     })
   })
