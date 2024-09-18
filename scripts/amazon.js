@@ -39,6 +39,7 @@
 //Arrays and Objects are used to organise Data in JS
  
 import {cart} from '../data/cart.js';
+import {products} from '../data/products.js';
 
 
 let productsHTML = '';
