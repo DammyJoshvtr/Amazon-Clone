@@ -1,4 +1,3 @@
-
 /*const products = [{
   image: 'images/products/athletic-cotton-socks-6-pairs.jpg',
   name: 'Black and Gray Athletic Cotton Socks - 6 Pairs',
@@ -38,6 +37,8 @@
 
 //by the way this array and object is called Data Structure. 
 //Arrays and Objects are used to organise Data in JS
+ 
+import {cart} from '../data/cart.js';
 
 
 let productsHTML = '';
