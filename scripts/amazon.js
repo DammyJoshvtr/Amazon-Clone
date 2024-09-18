@@ -38,9 +38,11 @@
 //by the way this array and object is called Data Structure. 
 //Arrays and Objects are used to organise Data in JS
  
-import {cart} from '../data/cart.js';
+import {cart, addToCart} from '../data/cart.js';
 import {products} from '../data/products.js';
-
+//'import * as cartModule' imports everything in the files
+//and groups it together inside cartModule object
+//we can acess each import as a property or a method
 
 let productsHTML = '';
 
@@ -101,6 +103,18 @@ products.forEach((product) => {
 
 document.querySelector('.js_products_grid').innerHTML = productsHTML;
 
+function updateCartQuantity() {
+  let cartQuantity = 0;
+
+  cart.forEach((cartItem) => {
+    cartQuantity += cartItem.quantity;
+  })
+
+
+  document.querySelector('.js_cart_quantity')
+    .innerHTML = cartQuantity;
+}
+
 document.querySelectorAll('.js_add_to_cart')
   .forEach((button) => {
     button.addEventListener('click', () => {
@@ -108,31 +122,10 @@ document.querySelectorAll('.js_add_to_cart')
       //dataset gives all the data set that is associated with button element
       //it is then changed from kebab case to camel case by the console
       const productId = button.dataset.productId;
+      addToCart(productId);
+      updateCartQuantity();
+      
 
-      let matchingItem;
-      cart.forEach((item) => {
-        if (productId === item.productId) {
-          matchingItem = item;
-        }
-      })
-
-      if (matchingItem) {
-        matchingItem.quantity += 1;
-      } else {
-        cart.push({
-          productId: productId,
-          quantity: 1
-        })
-      }
-
-      let cartQuantity = 0;
-
-      cart.forEach((item) => {
-        cartQuantity += item.quantity;
-      })
-
-
-      document.querySelector('.js_cart_quantity')
-        .innerHTML = cartQuantity;
+      
     })
   })
